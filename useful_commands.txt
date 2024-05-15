@@ -1,0 +1,20 @@
+Compile exectuable that runs on bare metal, use custom linker script and startup code
+riscv32-unknown-elf-gcc -s -ffreestanding -nostartfiles -Tlink.ld startup.s rv.c -o rvelf
+
+View disassembly, all sections
+riscv32-unknown-elf-objdump -s -d rvelf > rvelf.txt
+
+Convert elf file to c header
+xxd -i rvelf > rvelf.h
+  
+Compile rv.c and convert to c header
+./gen_elfh c
+
+Compile rv.s and convert to c header
+./gen_elfh
+
+Make local project a single file to run on cpulator
+quom main.c cpulator.c
+
+Compile emulator and generate single file for cpulator
+./pjc

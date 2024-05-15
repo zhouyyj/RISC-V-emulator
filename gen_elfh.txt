@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ "$1" == "c" ]; then
+    # Compile exectuable that runs on bare metal, use custom linker script and startup code
+    riscv32-unknown-elf-gcc -s -ffreestanding -nostartfiles -Tlink.ld startup.s rv.c -o rvelf
+else
+    riscv32-unknown-elf-gcc -s -ffreestanding -nostartfiles -Tlink.ld rv.s -o rvelf
+fi
+
+# # Compile exectuable that runs on bare metal, use custom linker script and startup code
+# riscv32-unknown-elf-gcc -s -ffreestanding -nostartfiles -Tlink.ld startup.s rv.c -o rvelf
+
+# riscv32-unknown-elf-gcc -s -ffreestanding -nostartfiles -Tlink.ld rv.s -o rvelf
+
+# Convert elf file to c header
+xxd -i rvelf > rvelf.h
+
+# View disassembly, all sections
+riscv32-unknown-elf-objdump -s -d rvelf > rvelf.txt

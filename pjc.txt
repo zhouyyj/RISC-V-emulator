@@ -1,0 +1,4 @@
+#!/bin/bash
+
+quom main.c cpulator.c
+gcc main.c io.c -o main

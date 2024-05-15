@@ -1,0 +1,43 @@
+Introduction
+
+This project is a software emulator for the RISC-V unprivileged RV32I ISA (Version 20191213)[]. It supports all RV32I base integer instructions except FENCE.
+The program emulates a RV32I system, including a processor, memory, and I/O. It also provides simple debugging features. It loads an ELF exectuable into memory and sequentially interpret and execute machine codes.
+
+Technical Overwiew
+
+
+
+Usage Guide
+
+1. Compile the guest program
+The 
+
+2. Include the ELF file
+
+
+Optional: View ELF file contents
+
+Optional: Use the gen_elfh script
+
+3. Start the emulator program
+
+
+
+4. User Interface
+
+5. Environment Calls and Breakpoints    /    Guest Program I/O
+
+
+
+Manipulate Input Devices(Switches, Keys)
+Keys
+1. Press key 1 to perform "step" function
+2. Press key 2 to stop the program, press again to continue. 
+When the example program asks for inputting number, it acts as confirm button.
+3. Press key 4 to restart the program
+
+Switches
+- Using switches for inputting numbers in binary. e.g. switch 3 indicates 8 in decimal (0b1000).
+
+
+Attribution Table
